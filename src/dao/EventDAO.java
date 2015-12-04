@@ -13,6 +13,8 @@ public interface EventDAO {
 
     Event findEventById(int id);
 
+    Event findEventByName(String name);
+
     List<Event> findAllEvents();
 
     List<Event> findEventsByDate(LocalDateTime dateTime);
@@ -20,6 +22,8 @@ public interface EventDAO {
     List<Event> findEventsByMapPoint(MapPoint mapPoint);
 
     List<Event> findEventsByCreator(User user);
+
+    List<Event> findEventsByEventType(Event.EventType eventType);
 
     Event updateEvent(Event event);
 

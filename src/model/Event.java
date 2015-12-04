@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 
 public class Event {
 
-    private enum EventType{
+    public enum EventType{
 
     }
 
