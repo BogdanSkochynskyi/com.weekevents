@@ -6,9 +6,11 @@ public class User {
 
     private int id;
     private String login;
+    private String email;
     private String password;
-    private String role;
+    private UserRole role;
     private List<Event> eventsToGo;
+    private List<Event> createdEvents;
 
     public int getId() {
         return id;
@@ -26,6 +28,14 @@ public class User {
         this.login = login;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getPassword() {
         return password;
     }
@@ -34,11 +44,11 @@ public class User {
         this.password = password;
     }
 
-    public String getRole() {
+    public UserRole getRole() {
         return role;
     }
 
-    public void setRole(String role) {
+    public void setRole(UserRole role) {
         this.role = role;
     }
 
@@ -48,5 +58,17 @@ public class User {
 
     public void setEventsToGo(List<Event> eventsToGo) {
         this.eventsToGo = eventsToGo;
+    }
+
+    public List<Event> getCreatedEvents() {
+        return createdEvents;
+    }
+
+    public void setCreatedEvents(List<Event> createdEvents) {
+        this.createdEvents = createdEvents;
+    }
+
+    public enum UserRole {
+        ADMINISTRATOR, MODERATOR, REGISTERED, GUEST
     }
 }
