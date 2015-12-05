@@ -16,10 +16,10 @@ public class Event {
     private LocalDateTime dateTimeOfEvent;
     //TODO: add photo. Which type select for it?
     private MapPoint mapPoint;
+    private String address;
     private User creator;
 
     //TODO: price? some other features???
-
 
     public int getId() {
         return id;
@@ -75,6 +75,14 @@ public class Event {
 
     public void setMapPoint(MapPoint mapPoint) {
         this.mapPoint = mapPoint;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public User getCreator() {

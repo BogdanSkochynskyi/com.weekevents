@@ -5,7 +5,6 @@ public class MapPoint {
     private int id;
     private double lng; // долгота
     private double lat; // широта
-    private String name; //???is it necessary?
 
     public int getId() {
         return id;
@@ -31,11 +30,4 @@ public class MapPoint {
         this.lat = lat;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 }
