@@ -1,7 +1,10 @@
 package model;
 
+import javax.persistence.*;
 import java.util.List;
 
+@Entity
+@Table(name = "user")
 public class User {
 
     private int id;
@@ -12,6 +15,23 @@ public class User {
     private List<Event> eventsToGo;
     private List<Event> createdEvents;
 
+    public User() {
+        this.login ="";
+        this.email = "";
+        this.password = "";
+        this.role = UserRole.GUEST;
+    }
+
+    public User(String login, String email, String password, UserRole role) {
+        this.login = login;
+        this.email = email;
+        this.password = password;
+        this.role = role;
+    }
+
+    @Id
+    @GeneratedValue(generator = "increment")
+    @Column(name = "id")
     public int getId() {
         return id;
     }
@@ -20,6 +40,7 @@ public class User {
         this.id = id;
     }
 
+    @Column(name = "login")
     public String getLogin() {
         return login;
     }
@@ -28,6 +49,7 @@ public class User {
         this.login = login;
     }
 
+    @Column(name = "email")
     public String getEmail() {
         return email;
     }
@@ -36,6 +58,7 @@ public class User {
         this.email = email;
     }
 
+    @Column(name = "password")
     public String getPassword() {
         return password;
     }
@@ -44,6 +67,8 @@ public class User {
         this.password = password;
     }
 
+    @Column(name = "role")
+    @Enumerated(EnumType.ORDINAL)
     public UserRole getRole() {
         return role;
     }
