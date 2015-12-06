@@ -1,6 +1,6 @@
-package dao;
+package com.weekevents.dao;
 
-import model.MapPoint;
+import com.weekevents.model.MapPoint;
 
 import java.util.List;
 

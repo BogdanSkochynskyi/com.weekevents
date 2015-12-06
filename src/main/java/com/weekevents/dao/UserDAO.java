@@ -1,7 +1,7 @@
-package dao;
+package com.weekevents.dao;
 
-import model.Event;
-import model.User;
+import com.weekevents.model.Event;
+import com.weekevents.model.User;
 
 import java.util.List;
 

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.weekevents.model.User" table="user" catalog="test">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" unique="true" not-null="true" />
+            <generator class="identity" />
+        </id>
+        <property name="login" type="string">
+            <column name="login" length="45" not-null="true" unique="true" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" length="45" not-null="true" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="45" not-null="true" unique="true" />
+        </property>
+        <property name="role">
+            <column name="role" not-null="true"/>
+            <type name="org.hibernate.type.EnumType">
+                <param name="enumClass">com.weekevents.model.User.UserRole</param>
+            </type>
+        </property>
+    </class>
+</hibernate-mapping>

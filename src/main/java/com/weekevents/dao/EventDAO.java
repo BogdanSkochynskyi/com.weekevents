@@ -1,8 +1,8 @@
-package dao;
+package com.weekevents.dao;
 
-import model.Event;
-import model.MapPoint;
-import model.User;
+import com.weekevents.model.Event;
+import com.weekevents.model.MapPoint;
+import com.weekevents.model.User;
 
 import java.time.LocalDateTime;
 import java.util.List;

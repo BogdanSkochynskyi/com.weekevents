@@ -1,4 +1,4 @@
-package model;
+package com.weekevents.model;
 
 import java.time.LocalDateTime;
 
