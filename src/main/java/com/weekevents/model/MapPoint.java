@@ -1,9 +1,9 @@
 package com.weekevents.model;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
+@Entity
+@Table(name = "mapPoint")
 public class MapPoint {
 
     private int id;

@@ -3,6 +3,8 @@ package com.weekevents.model;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
+@Entity
+@Table(name = "event")
 public class Event {
 
     public enum EventType{
@@ -67,18 +69,10 @@ public class Event {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     @Column(name = "type")
     @Enumerated(EnumType.ORDINAL)
     public EventType getType() {
         return type;
-    }
-
-    public void setType(EventType type) {
-        this.type = type;
     }
 
     @Column(name = "shortDescription")
@@ -86,17 +80,9 @@ public class Event {
         return shortDescription;
     }
 
-    public void setShortDescription(String shortDescription) {
-        this.shortDescription = shortDescription;
-    }
-
     @Column(name = "description")
     public String getFullDescription() {
         return fullDescription;
-    }
-
-    public void setFullDescription(String fullDescription) {
-        this.fullDescription = fullDescription;
     }
 
     @Column(name = "datetime")
@@ -104,16 +90,10 @@ public class Event {
         return dateTimeOfEvent;
     }
 
-    public void setDateTimeOfEvent(LocalDateTime dateTimeOfEvent) {
-        this.dateTimeOfEvent = dateTimeOfEvent;
-    }
-
+    @OneToMany
+    @JoinColumn
     public MapPoint getMapPoint() {
         return mapPoint;
-    }
-
-    public void setMapPoint(MapPoint mapPoint) {
-        this.mapPoint = mapPoint;
     }
 
     @Column(name = "address")
@@ -121,12 +101,36 @@ public class Event {
         return address;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
     public User getCreator() {
         return creator;
+    }
+
+    public void setType(EventType type) {
+        this.type = type;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setShortDescription(String shortDescription) {
+        this.shortDescription = shortDescription;
+    }
+
+    public void setFullDescription(String fullDescription) {
+        this.fullDescription = fullDescription;
+    }
+
+    public void setDateTimeOfEvent(LocalDateTime dateTimeOfEvent) {
+        this.dateTimeOfEvent = dateTimeOfEvent;
+    }
+
+    public void setMapPoint(MapPoint mapPoint) {
+        this.mapPoint = mapPoint;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public void setCreator(User creator) {
