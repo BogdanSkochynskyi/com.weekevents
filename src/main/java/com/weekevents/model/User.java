@@ -12,7 +12,6 @@ public class User {
     private String email;
     private String password;
     private UserRole role;
-    private List<Event> eventsToGo;
     private List<Event> createdEvents;
 
     public User() {
@@ -30,8 +29,8 @@ public class User {
     }
 
     @Id
-    @GeneratedValue(generator = "increment")
-    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "user_id")
     public int getId() {
         return id;
     }
@@ -77,14 +76,7 @@ public class User {
         this.role = role;
     }
 
-    public List<Event> getEventsToGo() {
-        return eventsToGo;
-    }
-
-    public void setEventsToGo(List<Event> eventsToGo) {
-        this.eventsToGo = eventsToGo;
-    }
-
+    @OneToMany(mappedBy = "user")
     public List<Event> getCreatedEvents() {
         return createdEvents;
     }

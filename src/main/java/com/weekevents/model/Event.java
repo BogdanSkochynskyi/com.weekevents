@@ -19,11 +19,11 @@ public class Event {
         this.dateTimeOfEvent = LocalDateTime.now();
         this.mapPoint = new MapPoint();
         this.address = "Default address";
-        this.creator = new User();
+        this.user = new User();
     }
 
     public Event(String name, EventType type, String shortDescription, String fullDescription,
-                 LocalDateTime dateTimeOfEvent, MapPoint mapPoint, String address, User creator) {
+                 LocalDateTime dateTimeOfEvent, MapPoint mapPoint, String address, User user) {
         this.name = name;
         this.type = type;
         this.shortDescription = shortDescription;
@@ -31,7 +31,7 @@ public class Event {
         this.dateTimeOfEvent = dateTimeOfEvent;
         this.mapPoint = mapPoint;
         this.address = address;
-        this.creator = creator;
+        this.user = user;
     }
 
     private int id;
@@ -49,7 +49,7 @@ public class Event {
     private MapPoint mapPoint;
 
     private String address;
-    private User creator;
+    private User user;
 
     //TODO: price? some other features???
 
@@ -90,8 +90,8 @@ public class Event {
         return dateTimeOfEvent;
     }
 
-    @OneToMany
-    @JoinColumn
+    @OneToOne
+    @JoinColumn(name = "mapPoint_id")
     public MapPoint getMapPoint() {
         return mapPoint;
     }
@@ -101,8 +101,10 @@ public class Event {
         return address;
     }
 
-    public User getCreator() {
-        return creator;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    public User getUser() {
+        return user;
     }
 
     public void setType(EventType type) {
@@ -133,7 +135,7 @@ public class Event {
         this.address = address;
     }
 
-    public void setCreator(User creator) {
-        this.creator = creator;
+    public void setUser(User creator) {
+        this.user = creator;
     }
 }
