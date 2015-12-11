@@ -6,14 +6,14 @@ import java.util.List;
 
 public interface MapPointDAO {
 
-    MapPoint create(MapPoint mapPoint);
+    void create(MapPoint mapPoint);
 
     MapPoint findById(int id);
 
     List<MapPoint> findAll();
 
-    MapPoint update(MapPoint mapPoint);
+    void update(MapPoint mapPoint);
 
-    boolean delete(MapPoint mapPoint);
+    void delete(MapPoint mapPoint);
 
 }
