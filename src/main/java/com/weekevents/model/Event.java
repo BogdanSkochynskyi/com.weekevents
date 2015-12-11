@@ -11,15 +11,39 @@ public class Event {
         DEFAULT_TYPE
     }
 
+
+    private int id;
+
+    @Column(name = "name")
+    private String name;
+
+    private EventType type;
+
+    @Column(name = "shortDescription")
+    private String shortDescription;
+
+    @Column(name = "description")
+    private String fullDescription;
+
+    @Column(name = "datetime")
+    private LocalDateTime dateTimeOfEvent;
+    //TODO: add photo. Which type select for it?
+
+    @OneToOne
+    @JoinColumn(name = "mapPoint_id")
+    private MapPoint mapPoint;
+
+    @Column(name = "address")
+    private String address;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    //TODO: price? some other features???
+
+
     public Event() {
-        this.name = "Default name";
-        this.type = EventType.DEFAULT_TYPE;
-        this.shortDescription = "Short description";
-        this.fullDescription = "Full description";
-        this.dateTimeOfEvent = LocalDateTime.now();
-        this.mapPoint = new MapPoint();
-        this.address = "Default address";
-        this.user = new User();
     }
 
     public Event(String name, EventType type, String shortDescription, String fullDescription,
@@ -34,24 +58,6 @@ public class Event {
         this.user = user;
     }
 
-    private int id;
-
-    private String name;
-
-    private EventType type;
-
-    private String shortDescription;
-
-    private String fullDescription;
-
-    private LocalDateTime dateTimeOfEvent;
-    //TODO: add photo. Which type select for it?
-    private MapPoint mapPoint;
-
-    private String address;
-    private User user;
-
-    //TODO: price? some other features???
 
     @Id
     @GeneratedValue(generator = "increment")
@@ -64,45 +70,36 @@ public class Event {
         this.id = id;
     }
 
-    @Column(name = "name")
     public String getName() {
         return name;
     }
 
     @Column(name = "type")
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     public EventType getType() {
         return type;
     }
 
-    @Column(name = "shortDescription")
     public String getShortDescription() {
         return shortDescription;
     }
 
-    @Column(name = "description")
     public String getFullDescription() {
         return fullDescription;
     }
 
-    @Column(name = "datetime")
     public LocalDateTime getDateTimeOfEvent() {
         return dateTimeOfEvent;
     }
 
-    @OneToOne
-    @JoinColumn(name = "mapPoint_id")
     public MapPoint getMapPoint() {
         return mapPoint;
     }
 
-    @Column(name = "address")
     public String getAddress() {
         return address;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
     public User getUser() {
         return user;
     }

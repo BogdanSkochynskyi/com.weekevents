@@ -7,18 +7,28 @@ import java.util.List;
 @Table(name = "user")
 public class User {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "user_id")
     private int id;
+
+    @Column(name = "login")
     private String login;
+
+    @Column(name = "email")
     private String email;
+
+    @Column(name = "password")
     private String password;
+
+    @Column(name = "role")
+    @Enumerated(EnumType.STRING)
     private UserRole role;
+
+    @OneToMany(mappedBy = "user")
     private List<Event> createdEvents;
 
     public User() {
-        this.login ="";
-        this.email = "";
-        this.password = "";
-        this.role = UserRole.GUEST;
     }
 
     public User(String login, String email, String password, UserRole role) {
@@ -28,9 +38,7 @@ public class User {
         this.role = role;
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "user_id")
+
     public int getId() {
         return id;
     }
@@ -39,7 +47,6 @@ public class User {
         this.id = id;
     }
 
-    @Column(name = "login")
     public String getLogin() {
         return login;
     }
@@ -48,7 +55,6 @@ public class User {
         this.login = login;
     }
 
-    @Column(name = "email")
     public String getEmail() {
         return email;
     }
@@ -57,7 +63,6 @@ public class User {
         this.email = email;
     }
 
-    @Column(name = "password")
     public String getPassword() {
         return password;
     }
@@ -66,8 +71,6 @@ public class User {
         this.password = password;
     }
 
-    @Column(name = "role")
-    @Enumerated(EnumType.ORDINAL)
     public UserRole getRole() {
         return role;
     }
@@ -76,7 +79,6 @@ public class User {
         this.role = role;
     }
 
-    @OneToMany(mappedBy = "user")
     public List<Event> getCreatedEvents() {
         return createdEvents;
     }
